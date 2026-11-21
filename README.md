@@ -31,6 +31,7 @@ Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리
 | sealed interface, data object, 스마트 캐스트 | `ui/demo/SealedStateDemo.kt` |
 | 확장 함수, 확장 프로퍼티, null 수신 타입 | `ui/demo/ExtensionFunctions.kt`, `ui/demo/ExtensionDemo.kt` |
 | 스코프 함수 (`let`, `run`, `with`, `apply`, `also`) | `ui/demo/ScopeFunctionDemo.kt` |
+| 컬렉션 연산 (`map`, `filter`, `groupBy`, 시퀀스) | `ui/demo/CollectionDemo.kt` |
 | 람다 DSL (`Json { }`) | `di/AppModule.kt` |
 
 모든 클래스와 함수에 KDoc 주석을 달아서, 코드만 읽어도 역할을 알 수 있게 함.
