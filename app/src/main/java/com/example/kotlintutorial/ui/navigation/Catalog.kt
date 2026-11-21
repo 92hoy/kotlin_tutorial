@@ -2,6 +2,7 @@ package com.example.kotlintutorial.ui.navigation
 
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
+import com.example.kotlintutorial.ui.demo.ExtensionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
@@ -52,5 +53,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "sealed 상태",
         summary = "`sealed interface`와 else 없는 `when`",
         screen = { SealedStateDemo() },
+    ),
+    DemoEntry(
+        route = "extension",
+        title = "확장 함수",
+        summary = "String, Int, List에 덧붙인 확장 함수와 확장 프로퍼티",
+        screen = { ExtensionDemo() },
     ),
 )
