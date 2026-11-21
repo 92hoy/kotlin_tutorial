@@ -26,6 +26,7 @@ Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리
 | 확장 함수 | `ui/Extensions.kt` |
 | runCatching, Result.fold | `data/MemoRepository.kt`, `ui/MemoViewModel.kt` |
 | 함수 타입 프로퍼티, forEach로 목적지 등록 | `ui/navigation/Catalog.kt`, `ui/navigation/AppNavHost.kt` |
+| null 안전 연산자 (`?.`, `?:`, `!!`, `let`) | `ui/demo/NullSafetyDemo.kt` |
 | 람다 DSL (`Json { }`) | `di/AppModule.kt` |
 
 모든 클래스와 함수에 KDoc 주석을 달아서, 코드만 읽어도 역할을 알 수 있게 함.
