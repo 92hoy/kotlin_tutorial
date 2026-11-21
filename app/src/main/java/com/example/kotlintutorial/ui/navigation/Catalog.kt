@@ -2,6 +2,7 @@ package com.example.kotlintutorial.ui.navigation
 
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
+import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
 
 /**
@@ -38,5 +39,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "null 안전성",
         summary = "`?.`, `?:`, `!!`, `let`을 같은 입력으로 비교",
         screen = { NullSafetyDemo() },
+    ),
+    DemoEntry(
+        route = "data-class",
+        title = "data class",
+        summary = "`copy`, 구조 분해, `==`와 `===` 비교",
+        screen = { DataClassDemo() },
     ),
 )
