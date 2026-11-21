@@ -2,6 +2,7 @@ package com.example.kotlintutorial.ui.navigation
 
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
+import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
 
@@ -45,5 +46,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "data class",
         summary = "`copy`, 구조 분해, `==`와 `===` 비교",
         screen = { DataClassDemo() },
+    ),
+    DemoEntry(
+        route = "sealed-state",
+        title = "sealed 상태",
+        summary = "`sealed interface`와 else 없는 `when`",
+        screen = { SealedStateDemo() },
     ),
 )
