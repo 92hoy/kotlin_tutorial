@@ -3,6 +3,7 @@ package com.example.kotlintutorial.ui.navigation
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
+import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
@@ -59,5 +60,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "확장 함수",
         summary = "String, Int, List에 덧붙인 확장 함수와 확장 프로퍼티",
         screen = { ExtensionDemo() },
+    ),
+    DemoEntry(
+        route = "scope-function",
+        title = "스코프 함수",
+        summary = "`let`, `run`, `with`, `apply`, `also`의 수신 방식과 반환값 비교",
+        screen = { ScopeFunctionDemo() },
     ),
 )
