@@ -25,6 +25,7 @@ Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리
 | sealed interface + when | `ui/UiState.kt`, `ui/MemoScreen.kt` |
 | 확장 함수 | `ui/Extensions.kt` |
 | runCatching, Result.fold | `data/MemoRepository.kt`, `ui/MemoViewModel.kt` |
+| 함수 타입 프로퍼티, forEach로 목적지 등록 | `ui/navigation/Catalog.kt`, `ui/navigation/AppNavHost.kt` |
 | 람다 DSL (`Json { }`) | `di/AppModule.kt` |
 
 모든 클래스와 함수에 KDoc 주석을 달아서, 코드만 읽어도 역할을 알 수 있게 함.
@@ -39,6 +40,9 @@ app/src/main/java/com/example/kotlintutorial
 ├─ data/   Room, Retrofit, Repository
 ├─ di/     Hilt 모듈
 └─ ui/     Compose 화면, ViewModel, 확장 함수
+   ├─ home/        카탈로그 홈
+   ├─ navigation/  Navigation, 데모 목록
+   └─ demo/        기능별 데모 화면
 ```
 
 ## Java와 비교해서 느낀 점
