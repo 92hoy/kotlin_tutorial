@@ -13,6 +13,7 @@ import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
+import com.example.kotlintutorial.ui.demo.OperatorDemo
 
 /**
  * 카탈로그에 등록되는 데모 한 개의 정보.
@@ -108,5 +109,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "제네릭, inline, reified",
         summary = "`reified`로 런타임에 타입 확인, 상한 제약, `out` 변성",
         screen = { GenericDemo() },
+    ),
+    DemoEntry(
+        route = "operator",
+        title = "연산자 오버로딩",
+        summary = "`operator fun`으로 `+`, `-`, `*`, `[]`, `in`, `<` 직접 정의",
+        screen = { OperatorDemo() },
     ),
 )
