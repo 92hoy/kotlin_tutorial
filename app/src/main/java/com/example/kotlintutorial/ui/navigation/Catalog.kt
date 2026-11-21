@@ -2,6 +2,11 @@ package com.example.kotlintutorial.ui.navigation
 
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
+import com.example.kotlintutorial.ui.demo.CollectionDemo
+import com.example.kotlintutorial.ui.demo.CoroutineDemo
+import com.example.kotlintutorial.ui.demo.ExtensionDemo
+import com.example.kotlintutorial.ui.demo.FlowSearchDemo
+import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
@@ -52,5 +57,35 @@ val catalog: List<DemoEntry> = listOf(
         title = "sealed 상태",
         summary = "`sealed interface`와 else 없는 `when`",
         screen = { SealedStateDemo() },
+    ),
+    DemoEntry(
+        route = "extension",
+        title = "확장 함수",
+        summary = "String, Int, List에 덧붙인 확장 함수와 확장 프로퍼티",
+        screen = { ExtensionDemo() },
+    ),
+    DemoEntry(
+        route = "scope-function",
+        title = "스코프 함수",
+        summary = "`let`, `run`, `with`, `apply`, `also`의 수신 방식과 반환값 비교",
+        screen = { ScopeFunctionDemo() },
+    ),
+    DemoEntry(
+        route = "collection",
+        title = "컬렉션 연산",
+        summary = "`map`, `filter`, `groupBy`, `partition`과 시퀀스 지연 평가",
+        screen = { CollectionDemo() },
+    ),
+    DemoEntry(
+        route = "coroutine",
+        title = "코루틴",
+        summary = "`async`/`await` 병렬 실행, 구조적 동시성, 취소",
+        screen = { CoroutineDemo() },
+    ),
+    DemoEntry(
+        route = "flow-search",
+        title = "Flow 검색",
+        summary = "`StateFlow`, `debounce`, `combine`으로 만든 검색",
+        screen = { FlowSearchDemo() },
     ),
 )
