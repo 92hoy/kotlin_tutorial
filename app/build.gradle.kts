@@ -60,6 +60,9 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
+    // Navigation
+    implementation(libs.navigation.compose)
+
     // Network
     implementation(libs.retrofit)
     implementation(libs.retrofit.serialization)

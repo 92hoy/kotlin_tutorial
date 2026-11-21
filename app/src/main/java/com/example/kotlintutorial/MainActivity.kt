@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
-import com.example.kotlintutorial.ui.MemoScreen
+import com.example.kotlintutorial.ui.navigation.AppNavHost
 import dagger.hilt.android.AndroidEntryPoint
 
-/** 앱의 유일한 Activity. Compose 화면을 띄우는 역할만 한다. */
+/** 앱의 유일한 Activity. Navigation 호스트를 띄우는 역할만 한다. */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                MemoScreen()
+                AppNavHost()
             }
         }
     }
