@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
 import com.example.kotlintutorial.ui.demo.CollectionDemo
 import com.example.kotlintutorial.ui.demo.CoroutineDemo
+import com.example.kotlintutorial.ui.demo.DelegationDemo
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
 import com.example.kotlintutorial.ui.demo.FlowSearchDemo
 import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
@@ -87,5 +88,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "Flow 검색",
         summary = "`StateFlow`, `debounce`, `combine`으로 만든 검색",
         screen = { FlowSearchDemo() },
+    ),
+    DemoEntry(
+        route = "delegation",
+        title = "위임",
+        summary = "`by lazy`, `observable`, `vetoable`, 클래스 위임 `by`",
+        screen = { DelegationDemo() },
     ),
 )
