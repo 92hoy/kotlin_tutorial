@@ -17,7 +17,7 @@ Kotlin 대표 기능을 하나씩 데모 화면으로 만들어 가는 계획. �
 - [x] 기능 카탈로그 홈 화면과 Navigation Compose
 - [x] null 안전성 데모 (`?.`, `?:`, `!!`, `let`)
 - [x] data class 데모 (`copy`, 구조 분해)
-- [ ] sealed 상태 데모 (`sealed` + `when`)
+- [x] sealed 상태 데모 (`sealed` + `when`)
 
 ### 마일스톤 2: 함수형과 비동기
 - [ ] 확장 함수 모음과 단위 테스트
