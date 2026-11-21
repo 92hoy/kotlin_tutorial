@@ -6,6 +6,7 @@ import com.example.kotlintutorial.ui.demo.CollectionDemo
 import com.example.kotlintutorial.ui.demo.CoroutineDemo
 import com.example.kotlintutorial.ui.demo.DelegationDemo
 import com.example.kotlintutorial.ui.demo.DslDemo
+import com.example.kotlintutorial.ui.demo.GenericDemo
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
 import com.example.kotlintutorial.ui.demo.FlowSearchDemo
 import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
@@ -101,5 +102,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "타입 안전 빌더 DSL",
         summary = "수신 객체 람다와 `@DslMarker`로 만든 HTML 빌더",
         screen = { DslDemo() },
+    ),
+    DemoEntry(
+        route = "generic",
+        title = "제네릭, inline, reified",
+        summary = "`reified`로 런타임에 타입 확인, 상한 제약, `out` 변성",
+        screen = { GenericDemo() },
     ),
 )
