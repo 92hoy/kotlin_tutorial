@@ -20,11 +20,11 @@ Kotlin 대표 기능을 하나씩 데모 화면으로 만들어 가는 계획. �
 - [x] sealed 상태 데모 (`sealed` + `when`)
 
 ### 마일스톤 2: 함수형과 비동기
-- [ ] 확장 함수 모음과 단위 테스트
-- [ ] 스코프 함수 비교 (`let`, `run`, `with`, `apply`, `also`)
-- [ ] 컬렉션 연산 (`map`, `filter`, `groupBy`, 시퀀스)
-- [ ] 코루틴 (`async`/`await`, 구조적 동시성, 취소)
-- [ ] Flow 검색 (`StateFlow`, `debounce`, `combine`)
+- [x] 확장 함수 모음과 단위 테스트
+- [x] 스코프 함수 비교 (`let`, `run`, `with`, `apply`, `also`)
+- [x] 컬렉션 연산 (`map`, `filter`, `groupBy`, 시퀀스)
+- [x] 코루틴 (`async`/`await`, 구조적 동시성, 취소)
+- [x] Flow 검색 (`StateFlow`, `debounce`, `combine`)
 
 ### 마일스톤 3: 고급 문법
 - [ ] 위임 (`by lazy`, `observable`, 클래스 위임)
