@@ -4,12 +4,16 @@ import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
 import com.example.kotlintutorial.ui.demo.CollectionDemo
 import com.example.kotlintutorial.ui.demo.CoroutineDemo
+import com.example.kotlintutorial.ui.demo.DelegationDemo
+import com.example.kotlintutorial.ui.demo.DslDemo
+import com.example.kotlintutorial.ui.demo.GenericDemo
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
 import com.example.kotlintutorial.ui.demo.FlowSearchDemo
 import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
 import com.example.kotlintutorial.ui.demo.NullSafetyDemo
+import com.example.kotlintutorial.ui.demo.OperatorDemo
 
 /**
  * 카탈로그에 등록되는 데모 한 개의 정보.
@@ -87,5 +91,29 @@ val catalog: List<DemoEntry> = listOf(
         title = "Flow 검색",
         summary = "`StateFlow`, `debounce`, `combine`으로 만든 검색",
         screen = { FlowSearchDemo() },
+    ),
+    DemoEntry(
+        route = "delegation",
+        title = "위임",
+        summary = "`by lazy`, `observable`, `vetoable`, 클래스 위임 `by`",
+        screen = { DelegationDemo() },
+    ),
+    DemoEntry(
+        route = "dsl",
+        title = "타입 안전 빌더 DSL",
+        summary = "수신 객체 람다와 `@DslMarker`로 만든 HTML 빌더",
+        screen = { DslDemo() },
+    ),
+    DemoEntry(
+        route = "generic",
+        title = "제네릭, inline, reified",
+        summary = "`reified`로 런타임에 타입 확인, 상한 제약, `out` 변성",
+        screen = { GenericDemo() },
+    ),
+    DemoEntry(
+        route = "operator",
+        title = "연산자 오버로딩",
+        summary = "`operator fun`으로 `+`, `-`, `*`, `[]`, `in`, `<` 직접 정의",
+        screen = { OperatorDemo() },
     ),
 )

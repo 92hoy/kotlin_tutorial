@@ -4,7 +4,8 @@ Java로만 안드로이드 앱을 만들어 오다가, Kotlin도 제대로 써 �
 Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리하는 게 목표.
 
 ## 지금 들어 있는 것
-메모 앱이 기본 뼈대. 여기에 기능 데모를 하나씩 붙여 가는 중.
+메모 앱이 기본 뼈대이고, 그 위에 Kotlin 기능 데모를 카탈로그 홈 화면에서 골라 들어가는 구조.
+데모는 null 안전성, data class, sealed, 확장 함수, 스코프 함수, 컬렉션, 코루틴, Flow, 위임, 빌더 DSL, 제네릭, 연산자 오버로딩까지 12개.
 
 - 메모 추가, 완료 체크, 삭제 (Room에 저장)
 - 상단에 오늘의 명언 표시, 새로고침 가능 (공개 API 호출)
@@ -34,6 +35,10 @@ Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리
 | 컬렉션 연산 (`map`, `filter`, `groupBy`, 시퀀스) | `ui/demo/CollectionDemo.kt` |
 | 코루틴 (`async`/`await`, 구조적 동시성, 취소) | `ui/demo/CoroutineDemo.kt` |
 | Flow 검색 (`StateFlow`, `debounce`, `combine`, `stateIn`) | `ui/demo/FlowSearchDemo.kt` |
+| 위임 (`by lazy`, `observable`, 클래스 위임) | `ui/demo/DelegationDemo.kt` |
+| 타입 안전 빌더 DSL (`@DslMarker`, 수신 객체 람다) | `ui/demo/DslDemo.kt` |
+| 제네릭, `inline`, `reified` | `ui/demo/GenericDemo.kt` |
+| 연산자 오버로딩 (`operator fun`, `compareTo`) | `ui/demo/OperatorDemo.kt` |
 | 람다 DSL (`Json { }`) | `di/AppModule.kt` |
 
 모든 클래스와 함수에 KDoc 주석을 달아서, 코드만 읽어도 역할을 알 수 있게 함.
@@ -59,5 +64,6 @@ app/src/main/java/com/example/kotlintutorial
 - XML 레이아웃과 `findViewById` 대신, 상태가 바뀌면 화면이 다시 그려지는 선언형 UI(Compose)로 바뀜.
 - null 체크는 `?.`, `?:`, `let`으로 짧게 쓸 수 있음.
 
-## 앞으로 할 일
-진행 상황은 [ROADMAP.md](ROADMAP.md)에 체크리스트로 관리함.
+## 진행 상황
+ROADMAP.md의 마일스톤 1~3 항목을 모두 구현함. 체크리스트는 [ROADMAP.md](ROADMAP.md) 참고.
+새 데모를 추가할 때는 `ui/demo/`에 화면을 만들고 `ui/navigation/Catalog.kt`의 `catalog`에 한 줄 등록하면 됨.
