@@ -2,6 +2,7 @@ package com.example.kotlintutorial.ui.navigation
 
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
+import com.example.kotlintutorial.ui.demo.NullSafetyDemo
 
 /**
  * 카탈로그에 등록되는 데모 한 개의 정보.
@@ -31,5 +32,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "메모 앱",
         summary = "data class, suspend, Flow, sealed 상태를 한 번에 쓴 기본 뼈대",
         screen = { MemoScreen() },
+    ),
+    DemoEntry(
+        route = "null-safety",
+        title = "null 안전성",
+        summary = "`?.`, `?:`, `!!`, `let`을 같은 입력으로 비교",
+        screen = { NullSafetyDemo() },
     ),
 )
