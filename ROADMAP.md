@@ -30,5 +30,5 @@ Kotlin 대표 기능을 하나씩 데모 화면으로 만들어 가는 계획. �
 - [x] 위임 (`by lazy`, `observable`, 클래스 위임)
 - [x] 타입 안전 빌더 DSL
 - [x] 제네릭, `inline`, `reified`
-- [ ] 연산자 오버로딩
+- [x] 연산자 오버로딩
 - [ ] README 최종 정리
