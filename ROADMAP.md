@@ -31,4 +31,4 @@ Kotlin 대표 기능을 하나씩 데모 화면으로 만들어 가는 계획. �
 - [x] 타입 안전 빌더 DSL
 - [x] 제네릭, `inline`, `reified`
 - [x] 연산자 오버로딩
-- [ ] README 최종 정리
+- [x] README 최종 정리
