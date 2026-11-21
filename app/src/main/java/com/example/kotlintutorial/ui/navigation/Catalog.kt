@@ -5,6 +5,7 @@ import com.example.kotlintutorial.ui.MemoScreen
 import com.example.kotlintutorial.ui.demo.CollectionDemo
 import com.example.kotlintutorial.ui.demo.CoroutineDemo
 import com.example.kotlintutorial.ui.demo.DelegationDemo
+import com.example.kotlintutorial.ui.demo.DslDemo
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
 import com.example.kotlintutorial.ui.demo.FlowSearchDemo
 import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
@@ -94,5 +95,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "위임",
         summary = "`by lazy`, `observable`, `vetoable`, 클래스 위임 `by`",
         screen = { DelegationDemo() },
+    ),
+    DemoEntry(
+        route = "dsl",
+        title = "타입 안전 빌더 DSL",
+        summary = "수신 객체 람다와 `@DslMarker`로 만든 HTML 빌더",
+        screen = { DslDemo() },
     ),
 )
