@@ -5,6 +5,7 @@ import com.example.kotlintutorial.ui.MemoScreen
 import com.example.kotlintutorial.ui.demo.CollectionDemo
 import com.example.kotlintutorial.ui.demo.CoroutineDemo
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
+import com.example.kotlintutorial.ui.demo.FlowSearchDemo
 import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
 import com.example.kotlintutorial.ui.demo.DataClassDemo
@@ -80,5 +81,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "코루틴",
         summary = "`async`/`await` 병렬 실행, 구조적 동시성, 취소",
         screen = { CoroutineDemo() },
+    ),
+    DemoEntry(
+        route = "flow-search",
+        title = "Flow 검색",
+        summary = "`StateFlow`, `debounce`, `combine`으로 만든 검색",
+        screen = { FlowSearchDemo() },
     ),
 )
