@@ -3,6 +3,7 @@ package com.example.kotlintutorial.ui.navigation
 import androidx.compose.runtime.Composable
 import com.example.kotlintutorial.ui.MemoScreen
 import com.example.kotlintutorial.ui.demo.CollectionDemo
+import com.example.kotlintutorial.ui.demo.CoroutineDemo
 import com.example.kotlintutorial.ui.demo.ExtensionDemo
 import com.example.kotlintutorial.ui.demo.ScopeFunctionDemo
 import com.example.kotlintutorial.ui.demo.SealedStateDemo
@@ -73,5 +74,11 @@ val catalog: List<DemoEntry> = listOf(
         title = "컬렉션 연산",
         summary = "`map`, `filter`, `groupBy`, `partition`과 시퀀스 지연 평가",
         screen = { CollectionDemo() },
+    ),
+    DemoEntry(
+        route = "coroutine",
+        title = "코루틴",
+        summary = "`async`/`await` 병렬 실행, 구조적 동시성, 취소",
+        screen = { CoroutineDemo() },
     ),
 )
