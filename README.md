@@ -1,22 +1,72 @@
 # Kotlin Tutorial
 
 Java로만 안드로이드 앱을 만들어 오다가, Kotlin도 제대로 써 보려고 시작한 연습 프로젝트임.
-Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리하는 게 목표.
+Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보고, 설명과 예시 코드까지 앱 안에서 바로 볼 수 있게 정리하는 게 목표.
 
-## 지금 들어 있는 것
-메모 앱이 기본 뼈대이고, 그 위에 Kotlin 기능 데모를 카탈로그 홈 화면에서 골라 들어가는 구조.
-데모는 null 안전성, data class, sealed, 확장 함수, 스코프 함수, 컬렉션, 코루틴, Flow, 위임, 빌더 DSL, 제네릭, 연산자 오버로딩까지 12개.
+## 앱 화면 구성
+홈 화면 제목은 **Kotlin Tutorial**. 기능을 난이도별로 묶어 두었고, 누르면 아래 순서로 들어간다.
 
-- 메모 추가, 완료 체크, 삭제 (Room에 저장)
-- 상단에 오늘의 명언 표시, 새로고침 가능 (공개 API 호출)
-- 명언은 로딩 / 성공 / 실패 상태를 나눠서 처리
+1. 홈: 초급 / 중급 / 고급 / 종합 예제 목록 + 앱 구조 카드
+2. 기능 상세: 설명, 핵심 포인트, Kotlin 예시 코드, Java로 쓰면
+3. 직접 해보기: 상세 화면 하단 버튼으로 실습 화면 실행
+
+| 난이도 | 기능 |
+|---|---|
+| 초급 | null 안전성, data class, 컬렉션 연산, 확장 함수, 스코프 함수 |
+| 중급 | sealed 상태, 위임, 코루틴, 연산자 오버로딩 |
+| 고급 | Flow 검색, 제네릭 / inline / reified, 타입 안전 빌더 DSL |
+| 종합 예제 | 메모 앱 (Room, Retrofit, Flow, Hilt) |
+
+홈 맨 위 "앱 구조 한눈에 보기"에서는 레이어 구조, 적용한 패턴, 디렉토리 위치를 탭으로 볼 수 있음.
 
 ## 사용한 기술
-- Kotlin, Jetpack Compose (Material 3)
+- Kotlin, Jetpack Compose (Material 3), Navigation Compose
 - Coroutines, Flow, StateFlow
 - Room, Hilt (둘 다 KSP)
 - Retrofit, kotlinx.serialization
 - ViewModel + Repository 구조 (MVVM)
+
+## 아키텍처
+위에서 아래로만 의존하고, 아래 레이어는 위 레이어를 모름.
+
+```
+UI (Compose)  ──이벤트──▶  ViewModel (StateFlow)  ──suspend──▶  Repository  ──▶  Room / Retrofit
+      ◀──────상태─────────         ◀──────Flow, Result──────         ◀──────────
+                       DI: Hilt가 모든 레이어에 객체를 주입
+```
+
+- 읽기: Room 변경 → Flow → Repository → StateFlow → 화면 갱신
+- 쓰기: 버튼 → ViewModel → `viewModelScope.launch` → Repository → DAO
+
+### 적용한 패턴
+| 패턴 | 위치 |
+|---|---|
+| MVVM | `ui/MemoViewModel.kt`, `ui/MemoScreen.kt` |
+| Repository | `data/MemoRepository.kt` |
+| 의존성 주입 | `di/AppModule.kt`, `@HiltViewModel`, `@Inject` |
+| 싱글톤 | `@Singleton`, `object AppModule` |
+| 옵저버 | `Flow`, `StateFlow`, `collectAsStateWithLifecycle` |
+| 단방향 데이터 흐름 | ViewModel 상태 → 화면, 화면 이벤트 → ViewModel |
+| 상태 패턴 (유사) | `ui/UiState.kt` |
+| 빌더 | `ui/demo/DslDemo.kt`, `Retrofit.Builder`, `Json { }` |
+| 위임 | `ui/demo/DelegationDemo.kt` |
+
+## 디렉토리 구조
+```
+app/src/main/java/com/example/kotlintutorial
+├─ MainActivity.kt         앱 진입점, NavHost 실행
+├─ MemoApp.kt              Hilt 시작점
+├─ data/                   Room, Retrofit, Repository
+├─ di/                     Hilt 모듈
+└─ ui/
+   ├─ MemoScreen.kt, MemoViewModel.kt, UiState.kt, Extensions.kt
+   ├─ home/                튜토리얼 홈 (난이도별 목록)
+   ├─ topic/               기능 상세 화면, 코드 블록
+   ├─ tutorial/            난이도와 기능 목록, 설명 데이터
+   ├─ architecture/        앱 구조 설명 화면
+   ├─ navigation/          화면 이동 (NavHost)
+   └─ demo/                기능별 실습 화면
+```
 
 ## Kotlin 기능을 쓴 위치
 | 기능 | 파일 |
@@ -26,7 +76,9 @@ Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리
 | sealed interface + when | `ui/UiState.kt`, `ui/MemoScreen.kt` |
 | 확장 함수 | `ui/Extensions.kt` |
 | runCatching, Result.fold | `data/MemoRepository.kt`, `ui/MemoViewModel.kt` |
-| 함수 타입 프로퍼티, forEach로 목적지 등록 | `ui/navigation/Catalog.kt`, `ui/navigation/AppNavHost.kt` |
+| enum 프로퍼티, `Level.entries`, 함수 타입 프로퍼티 | `ui/tutorial/Topic.kt`, `ui/tutorial/Topics.kt` |
+| `groupBy`, `orEmpty`, 확장 함수 `Level.containerColor()` | `ui/home/TutorialHomeScreen.kt`, `ui/topic/TopicScreen.kt` |
+| 정규식 + `buildAnnotatedString` 빌더 | `ui/topic/CodeBlock.kt` |
 | null 안전 연산자 (`?.`, `?:`, `!!`, `let`) | `ui/demo/NullSafetyDemo.kt` |
 | data class `copy`, 구조 분해 | `ui/demo/DataClassDemo.kt` |
 | sealed interface, data object, 스마트 캐스트 | `ui/demo/SealedStateDemo.kt` |
@@ -46,17 +98,12 @@ Kotlin을 대표하는 기능을 하나씩 직접 앱에 넣어 보면서 정리
 ## 실행 방법
 1. Android Studio 최신 안정 버전으로 이 저장소를 연다.
 2. Gradle Sync가 끝나면 에뮬레이터나 실기기(Android 8.0 이상)에서 `app`을 실행한다.
-3. 명언은 `dummyjson.com`에서 가져오므로 인터넷 연결 필요.
+3. 메모 앱의 명언은 `dummyjson.com`에서 가져오므로 인터넷 연결 필요.
 
-```
-app/src/main/java/com/example/kotlintutorial
-├─ data/   Room, Retrofit, Repository
-├─ di/     Hilt 모듈
-└─ ui/     Compose 화면, ViewModel, 확장 함수
-   ├─ home/        카탈로그 홈
-   ├─ navigation/  Navigation, 데모 목록
-   └─ demo/        기능별 데모 화면
-```
+## 새 기능 추가하는 법
+1. `ui/demo/`에 실습 화면을 만든다.
+2. `ui/tutorial/Topics.kt`의 `topics`에 `Topic` 하나를 등록한다. (난이도, 설명, 예시 코드 포함)
+3. 홈 목록과 상세 화면, 경로는 자동으로 반영됨.
 
 ## Java와 비교해서 느낀 점
 - 모델 클래스가 `data class` 한 줄로 끝남. getter, setter, equals를 직접 쓸 필요 없음.
@@ -65,5 +112,4 @@ app/src/main/java/com/example/kotlintutorial
 - null 체크는 `?.`, `?:`, `let`으로 짧게 쓸 수 있음.
 
 ## 진행 상황
-ROADMAP.md의 마일스톤 1~3 항목을 모두 구현함. 체크리스트는 [ROADMAP.md](ROADMAP.md) 참고.
-새 데모를 추가할 때는 `ui/demo/`에 화면을 만들고 `ui/navigation/Catalog.kt`의 `catalog`에 한 줄 등록하면 됨.
+ROADMAP.md의 마일스톤 1~4 항목을 모두 구현함. 체크리스트는 [ROADMAP.md](ROADMAP.md) 참고.
